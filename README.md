@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Interactive Wall Calendar Component
 
-## Getting Started
+A highly polished, responsive React/Next.js calendar component inspired by physical wall calendars. Built for performance, beautiful UX, and seamless interaction, adhering strictly to frontend-only constraints.
 
-First, run the development server:
+## 🚀 Core Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+* **Wall Calendar Aesthetic:** A dynamic hero image anchors the left panel, automatically updating to match the vibe of the current month.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+* **Intelligent Date Range Selection:** Users can seamlessly click to set start and end dates. The custom `useCalendar` hook handles edge cases (like selecting an end date before a start date), and the current day is always distinctly highlighted.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+* **Integrated Notes System:** A dedicated text area allows users to jot down month-specific memos. Data is persisted entirely on the client side using `localStorage`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+* **Smart Holiday Integration:** Automatically calculates and highlights major National and Regional Indian festivals. Custom-built to run entirely locally without relying on slow external APIs. Tooltips are fully touch-responsive for mobile users.
 
-## Learn More
+* **Fluid Animations:** Powered by `Framer Motion` for buttery smooth 3D page-flips and crossfades when navigating between months.
 
-To learn more about Next.js, take a look at the following resources:
+## 🧠 Technical Architecture & Engineering Decisions
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To meet the evaluation criteria and ensure a production-ready component, the following architectural choices were made:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+* **Strictly Frontend:** Adhering to the challenge constraints, no backend, database, or external API was used. State and persistence are handled entirely via React Hooks and browser `localStorage`.
 
-## Deploy on Vercel
+* **Performance & Asset Optimization:** All hero images are hosted locally in the `/public` directory rather than relying on external image CDNs. This guarantees instant load times, prevents broken layouts, and ensures animations don't stutter while waiting for network requests.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+* **Fluid Responsiveness (`aspect-square`):** Instead of using rigid, hardcoded heights that break on mobile, the calendar grid utilizes CSS aspect-ratios. This ensures every day-cell remains a perfectly proportioned touch-target, gracefully collapsing from a side-by-side desktop view to a vertically stacked mobile layout.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* **Bulletproof Date Handling:** Apple devices (iOS Safari) have notorious bugs when parsing specific string formats into JavaScript `Date` objects. The codebase bypasses this by utilizing strict substring slicing and `date-fns` for cross-browser stability, preventing fatal mobile crashes.
+
+* **Hydration Stability:** Implemented an `isMounted` state check to ensure the Next.js server-side rendering strictly matches the client-side environment, preventing layout shifts and hydration mismatch crashes on mobile devices.
+
+## 🛠️ Tech Stack
+
+* **Framework:** Next.js (App Router)
+* **Styling:** Tailwind CSS
+* **Animations:** Framer Motion
+* **Date Logic:** date-fns, date-holidays
+
+## 💻 How to Run Locally
+
+1. Clone the repository:
+   ```bash
+   git clone <your-repo-url>
+
+2. Navigate into the project directory:
+    cd <your-folder-name>
+
+3. Install the dependencies:
+    npm install
+
+4. Start the development server:
+    npm run dev
+
+5. Open your browser and visit http://localhost:3000 to view the calendar.
