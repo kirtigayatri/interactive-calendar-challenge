@@ -44,9 +44,11 @@ To meet the evaluation criteria and ensure a production-ready component, the fol
     cd <your-folder-name>
 
 4. Install the dependencies:
+   ```bash
     npm install
 
-5. Start the development server:
+6. Start the development server:
+   ```bash
     npm run dev
 
-6. Open your browser and visit http://localhost:3000 to view the calendar.
+8. Open your browser and visit http://localhost:3000 to view the calendar.
