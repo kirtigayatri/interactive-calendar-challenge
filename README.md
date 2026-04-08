@@ -38,3 +38,15 @@ To meet the evaluation criteria and ensure a production-ready component, the fol
 1. Clone the repository:
    ```bash
    git clone <your-repo-url>
+
+2. Navigate into the project directory:
+    ```bash
+    cd <your-folder-name>
+
+4. Install the dependencies:
+    npm install
+
+5. Start the development server:
+    npm run dev
+
+6. Open your browser and visit http://localhost:3000 to view the calendar.
